@@ -12,6 +12,7 @@ path = "src/lib/lib.rs"
 
 [dependencies]
 actix-rt = "1.0"
+brace-config = { git = "https://github.com/brace-rs/brace-config", rev = "da563f455a8d4e98d90dc2f27c639ea789f078c2", features = ["toml"], default_features = false }
 brace-web = { git = "https://github.com/brace-rs/brace-web", rev = "dd0cee2e916553594acb8270632b5727474db01f" }
 
 [dev-dependencies]

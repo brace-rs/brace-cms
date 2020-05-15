@@ -1,14 +1,22 @@
 use std::io;
+use std::net::Ipv4Addr;
 
+use brace_config::Config;
 use brace_web::core::{web, App, HttpResponse, HttpServer};
 
 async fn index() -> HttpResponse {
     HttpResponse::Ok().body("Hello world")
 }
 
-pub async fn server() -> io::Result<()> {
+pub async fn server(config: Config) -> io::Result<()> {
+    let host = config
+        .get::<_, Ipv4Addr>("server.host")
+        .unwrap_or_else(|_| Ipv4Addr::new(127, 0, 0, 1));
+    let port = config.get::<_, u16>("server.port").unwrap_or(8080);
+    let addr = format!("{}:{}", host, port);
+
     HttpServer::new(|| App::new().route("/", web::get().to(index)))
-        .bind("127.0.0.1:8080")?
+        .bind(addr)?
         .run()
         .await
 }
