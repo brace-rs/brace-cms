@@ -6,3 +6,17 @@ description = "A content management system framework."
 repository = "https://github.com/brace-rs/brace-cms"
 license = "MIT OR Apache-2.0"
 edition = "2018"
+
+[lib]
+path = "src/lib/lib.rs"
+
+[dependencies]
+actix-rt = "1.0"
+brace-web = { git = "https://github.com/brace-rs/brace-web", rev = "dd0cee2e916553594acb8270632b5727474db01f" }
+
+[dev-dependencies]
+assert_cmd = "1.0"
+awc = "1.0"
+
+[[bin]]
+name = "brace-cms"
