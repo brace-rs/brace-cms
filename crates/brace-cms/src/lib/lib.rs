@@ -2,6 +2,7 @@ use std::io;
 use std::net::Ipv4Addr;
 
 use brace_config::Config;
+use brace_web::core::middleware::Logger;
 use brace_web::core::{web, App, HttpResponse, HttpServer};
 
 async fn index() -> HttpResponse {
@@ -9,13 +10,20 @@ async fn index() -> HttpResponse {
 }
 
 pub async fn server(config: Config) -> io::Result<()> {
+    brace_cms_log::init(&config).unwrap();
+
     let host = config
         .get::<_, Ipv4Addr>("server.host")
         .unwrap_or_else(|_| Ipv4Addr::new(127, 0, 0, 1));
     let port = config.get::<_, u16>("server.port").unwrap_or(8080);
     let addr = format!("{}:{}", host, port);
+    let format = r#"%a "%r" %s %b "%{Referer}i" "%{User-Agent}i" %T"#;
 
-    let mut server = HttpServer::new(|| App::new().route("/", web::get().to(index)));
+    let mut server = HttpServer::new(move || {
+        App::new()
+            .wrap(Logger::new(format))
+            .route("/", web::get().to(index))
+    });
 
     #[cfg(feature = "dev")]
     {
