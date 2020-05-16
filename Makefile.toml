@@ -11,6 +11,26 @@ dependencies = [
   "clippy",
 ]
 
+[tasks.run]
+script = [
+  "cargo run --manifest-path crates/brace-cms/Cargo.toml",
+]
+
+[tasks.run-dev]
+script = [
+  "systemfd --no-pid -s http::3000 -- cargo watch -x 'run --manifest-path crates/brace-cms/Cargo.toml --features dev'",
+]
+dependencies = [
+  "install-cargo-watch",
+  "install-systemfd",
+]
+
+[tasks.install-cargo-watch]
+install_crate = { crate_name = "cargo-watch", binary = "cargo-watch", test_arg = "--help" }
+
+[tasks.install-systemfd]
+install_crate = { crate_name = "systemfd", binary = "systemfd", test_arg = "--help" }
+
 [tasks.pre-git-commit]
 dependencies = [
   "lint",
