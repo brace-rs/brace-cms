@@ -15,10 +15,26 @@ pub async fn server(config: Config) -> io::Result<()> {
     let port = config.get::<_, u16>("server.port").unwrap_or(8080);
     let addr = format!("{}:{}", host, port);
 
-    HttpServer::new(|| App::new().route("/", web::get().to(index)))
-        .bind(addr)?
-        .run()
-        .await
+    let mut server = HttpServer::new(|| App::new().route("/", web::get().to(index)));
+
+    #[cfg(feature = "dev")]
+    {
+        use listenfd::ListenFd;
+
+        let mut listenfd = ListenFd::from_env();
+
+        server = match listenfd.take_tcp_listener(0)? {
+            Some(lst) => server.listen(lst)?,
+            None => server.bind(addr)?,
+        };
+    }
+
+    #[cfg(not(feature = "dev"))]
+    {
+        server = server.bind(addr)?;
+    }
+
+    server.run().await
 }
 
 #[cfg(test)]
