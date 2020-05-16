@@ -13,8 +13,8 @@ pub mod level;
 pub mod output;
 
 pub fn init(config: &Config) -> Result<(), InitError> {
-    let level: Level = config.get("log.level").unwrap_or(Level::default());
-    let output: Output = config.get("log.output").unwrap_or(Output::default());
+    let level: Level = config.get("log.level").unwrap_or_default();
+    let output: Output = config.get("log.output").unwrap_or_default();
     let mut logger = Dispatch::new();
 
     logger = match output {
