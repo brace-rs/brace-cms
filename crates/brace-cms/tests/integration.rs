@@ -1,5 +1,6 @@
 use std::env::current_dir;
 use std::process::Command;
+use std::str::from_utf8;
 use std::thread::sleep;
 use std::time::Duration;
 
@@ -21,6 +22,19 @@ async fn test_server() {
     let res = client.get("http://127.0.0.1:65080").send().await.unwrap();
 
     assert_eq!(res.status(), 200);
+
+    let mut res = client
+        .get("http://127.0.0.1:65080/postgres")
+        .send()
+        .await
+        .unwrap();
+
+    assert_eq!(res.status(), 200);
+
+    let body = res.body().await.unwrap();
+    let text = from_utf8(&body).unwrap();
+
+    assert!(text.contains("PostgreSQL"));
 
     process.kill().unwrap();
 }

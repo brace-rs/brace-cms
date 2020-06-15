@@ -5,6 +5,12 @@ use brace_config::Config;
 use brace_web::core::middleware::Logger;
 use brace_web::core::{web, App, HttpResponse, HttpServer};
 
+pub mod store {
+    pub mod postgres {
+        pub use brace_cms_store_postgres::*;
+    }
+}
+
 async fn index() -> HttpResponse {
     HttpResponse::Ok().body("Hello world")
 }
@@ -19,9 +25,12 @@ pub async fn server(config: Config) -> io::Result<()> {
     let addr = format!("{}:{}", host, port);
     let format = r#"%a "%r" %s %b "%{Referer}i" "%{User-Agent}i" %T"#;
 
+    let postgres = brace_cms_store_postgres::configure(&config).await;
+
     let mut server = HttpServer::new(move || {
         App::new()
             .wrap(Logger::new(format))
+            .configure(postgres.clone())
             .route("/", web::get().to(index))
     });
 

@@ -103,6 +103,19 @@ jobs:
   test:
     name: Test / ${{ matrix.target }}
     runs-on: ${{ matrix.os }}
+    services:
+      postgres:
+        image: postgres:11
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+        - 5432:5432
+        env:
+          POSTGRES_PASSWORD: postgres
+
     strategy:
       matrix:
         target:
@@ -168,6 +181,19 @@ jobs:
   coverage:
     name: Coverage
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:11
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+        - 5432:5432
+        env:
+          POSTGRES_PASSWORD: postgres
+
     steps:
     - name: Checkout
       uses: actions/checkout@v2
