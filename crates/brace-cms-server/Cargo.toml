@@ -1,25 +1,21 @@
 [package]
-name = "brace-cms"
+name = "brace-cms-server"
 version = "0.1.0"
 authors = ["Daniel Balcomb <daniel.balcomb@gmail.com>"]
-description = "The brace content management system framework."
+description = "The brace content management system server."
 repository = "https://github.com/brace-rs/brace-cms"
 license = "MIT OR Apache-2.0"
 edition = "2018"
 
 [features]
 default = []
-dev = ["brace-cms-server/dev"]
+dev = ["listenfd"]
 
 [dependencies]
-actix-rt = "1.0"
-brace-cms-log = { path = "../brace-cms-log" }
-brace-cms-server = { path = "../brace-cms-server" }
+brace-cms-store-postgres = { path = "../brace-cms-store-postgres" }
 brace-config = { git = "https://github.com/brace-rs/brace-config", rev = "da563f455a8d4e98d90dc2f27c639ea789f078c2", features = ["toml"], default_features = false }
+brace-web = { git = "https://github.com/brace-rs/brace-web", rev = "dd0cee2e916553594acb8270632b5727474db01f" }
+listenfd = { version = "0.3", optional = true }
 
 [dev-dependencies]
-assert_cmd = "1.0"
-awc = "1.0"
-
-[[bin]]
-name = "brace-cms"
+actix-rt = "1.0"
