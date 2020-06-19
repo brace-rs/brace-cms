@@ -1,7 +1,7 @@
 use std::io;
 
+use brace_cms::core::config::Config;
 use brace_cms::server::server;
-use brace_config::Config;
 
 #[actix_rt::main]
 async fn main() -> io::Result<()> {

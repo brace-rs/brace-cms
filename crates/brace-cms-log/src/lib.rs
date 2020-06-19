@@ -2,7 +2,7 @@ use chrono::Local;
 use fern::colors::ColoredLevelConfig;
 use fern::{log_file, Dispatch, InitError};
 
-use brace_config::Config;
+use brace_cms_core::config::Config;
 
 use self::level::Level;
 use self::output::Output;

@@ -4,7 +4,7 @@ use brace_data_store_postgres::{Config as PostgresConfig, Error as PostgresError
 use brace_web_core::web::{self, Data, ServiceConfig};
 use brace_web_core::{Error, HttpResponse};
 
-use brace_config::Config;
+use brace_cms_core::config::Config;
 
 pub async fn configure(config: &Config) -> impl Fn(&mut ServiceConfig) + Clone {
     let mut postgres_config = PostgresConfig::new();
