@@ -1,7 +1,7 @@
 use std::io;
 use std::net::Ipv4Addr;
 
-use brace_config::Config;
+use brace_cms_core::config::Config;
 use brace_web::core::middleware::Logger;
 use brace_web::core::{web, App, HttpServer};
 

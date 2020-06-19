@@ -8,7 +8,7 @@ license = "MIT OR Apache-2.0"
 edition = "2018"
 
 [dependencies]
-brace-config = { git = "https://github.com/brace-rs/brace-config", rev = "da563f455a8d4e98d90dc2f27c639ea789f078c2", default_features = false }
+brace-cms-core = { path = "../brace-cms-core" }
 chrono = "0.4"
 fern = { version = "0.6", features = ["colored"] }
 log = "0.4"

@@ -13,9 +13,9 @@ dev = ["brace-cms-server/dev"]
 
 [dependencies]
 actix-rt = "1.0"
+brace-cms-core = { path = "../brace-cms-core" }
 brace-cms-log = { path = "../brace-cms-log" }
 brace-cms-server = { path = "../brace-cms-server" }
-brace-config = { git = "https://github.com/brace-rs/brace-config", rev = "da563f455a8d4e98d90dc2f27c639ea789f078c2", features = ["toml"], default_features = false }
 
 [dev-dependencies]
 assert_cmd = "1.0"
