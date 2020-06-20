@@ -7,7 +7,7 @@ use brace_cms::server::server;
 async fn main() -> io::Result<()> {
     let config = Config::load("config.toml").unwrap_or_else(|_| Config::new());
 
-    brace_cms::log::init(&config).unwrap();
+    brace_cms::logger::init(&config).unwrap();
 
     server(config).await
 }

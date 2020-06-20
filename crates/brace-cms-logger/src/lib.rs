@@ -7,8 +7,6 @@ use brace_cms_core::config::Config;
 use self::level::Level;
 use self::output::Output;
 
-pub use log::{debug, error, info, log, trace, warn};
-
 pub mod level;
 pub mod output;
 

@@ -9,3 +9,4 @@ edition = "2018"
 
 [dependencies]
 brace-config = { git = "https://github.com/brace-rs/brace-config", rev = "8f4dd5a4803ef23ea8cec4092b8a40e9a19ce8bb", features = ["toml"], default_features = false }
+log = "0.4"
