@@ -2,7 +2,7 @@
 name = "brace-cms-store-postgres"
 version = "0.1.0"
 authors = ["Daniel Balcomb <daniel.balcomb@gmail.com>"]
-description = "The postgres data store integration."
+description = "The brace content management system store postgres integration."
 repository = "https://github.com/brace-rs/brace-cms"
 license = "MIT OR Apache-2.0"
 edition = "2018"
