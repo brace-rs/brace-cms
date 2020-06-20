@@ -1,7 +1,8 @@
 use std::fmt::{self, Display};
 
-use log::LevelFilter;
 use serde::{Deserialize, Serialize};
+
+use brace_cms_core::log::LevelFilter;
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 #[serde(rename_all = "lowercase")]

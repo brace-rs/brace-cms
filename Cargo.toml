@@ -2,7 +2,7 @@
 members = [
   "crates/brace-cms",
   "crates/brace-cms-core",
-  "crates/brace-cms-log",
+  "crates/brace-cms-logger",
   "crates/brace-cms-server",
   "crates/brace-cms-store-postgres",
 ]

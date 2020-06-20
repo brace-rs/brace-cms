@@ -1,8 +1,8 @@
 [package]
-name = "brace-cms-log"
+name = "brace-cms-logger"
 version = "0.1.0"
 authors = ["Daniel Balcomb <daniel.balcomb@gmail.com>"]
-description = "The logging component of the brace-cms project."
+description = "The brace content management system logger."
 repository = "https://github.com/brace-rs/brace-cms"
 license = "MIT OR Apache-2.0"
 edition = "2018"
@@ -11,5 +11,4 @@ edition = "2018"
 brace-cms-core = { path = "../brace-cms-core" }
 chrono = "0.4"
 fern = { version = "0.6", features = ["colored"] }
-log = "0.4"
 serde = { version = "1.0", features = ["derive"] }

@@ -14,7 +14,7 @@ dev = ["brace-cms-server/dev"]
 [dependencies]
 actix-rt = "1.0"
 brace-cms-core = { path = "../brace-cms-core" }
-brace-cms-log = { path = "../brace-cms-log" }
+brace-cms-logger = { path = "../brace-cms-logger" }
 brace-cms-server = { path = "../brace-cms-server" }
 
 [dev-dependencies]
