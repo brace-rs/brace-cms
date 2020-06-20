@@ -13,7 +13,7 @@ dev = ["listenfd"]
 
 [dependencies]
 brace-cms-core = { path = "../brace-cms-core" }
-brace-cms-store-postgres = { path = "../brace-cms-store-postgres" }
+brace-cms-store = { path = "../brace-cms-store" }
 brace-web = { git = "https://github.com/brace-rs/brace-web", rev = "dd0cee2e916553594acb8270632b5727474db01f" }
 listenfd = { version = "0.3", optional = true }
 

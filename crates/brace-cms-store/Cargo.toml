@@ -1,0 +1,11 @@
+[package]
+name = "brace-cms-store"
+version = "0.1.0"
+authors = ["Daniel Balcomb <daniel.balcomb@gmail.com>"]
+description = "The brace content management system store."
+repository = "https://github.com/brace-rs/brace-cms"
+license = "MIT OR Apache-2.0"
+edition = "2018"
+
+[dependencies]
+brace-cms-store-postgres = { path = "../brace-cms-store-postgres" }

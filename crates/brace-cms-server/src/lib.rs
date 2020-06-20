@@ -15,7 +15,7 @@ pub async fn server(config: Config) -> io::Result<()> {
     let addr = format!("{}:{}", host, port);
     let format = r#"%a "%r" %s %b "%{Referer}i" "%{User-Agent}i" %T"#;
 
-    let postgres = brace_cms_store_postgres::configure(&config).await;
+    let postgres = brace_cms_store::postgres::configure(&config).await;
 
     let mut server = HttpServer::new(move || {
         App::new()
